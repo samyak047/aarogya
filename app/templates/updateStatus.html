@@ -1,0 +1,70 @@
+{% extends "base_generic.html" %}
+{% block title %}
+<title> Status | {{pk}} </title>
+{% endblock %}
+
+
+{% block css %}
+ 
+{% endblock %}
+
+
+
+
+{% block nav %}
+<a href="{% url 'logout'%}"><i class="fa fa-fw fa-user"></i>Logout</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+{% if error %}
+<h1> {{error}} </h1>
+{% endif %}
+{% if statusList %}
+
+    <h2 class="tag"> Status for {{child}} </h2>
+
+    <div style="overflow-x:auto;">
+            <table>
+                <tr >
+                    <th> Created At </th>
+                    <th> Message</th>
+                    <th> Updated By</th>
+                </tr>
+                {% for status in statusList %}
+                <tr>
+                    <td> {{status.createdAt}} </td>
+                    <td> {{status.message}} </td>
+                    <td> {{status.updatedby.username}} </td>
+                </tr>
+                {% endfor %}
+                
+            </table>
+
+
+{% endif %}
+
+<form method = "POST">
+	{% if form %}
+	<br><br>
+	<h4 class="tag">Update Status</h4>
+	{% csrf_token %}
+	
+	{{ form }}
+    <div id="buttons">
+	<button type = "submit" class="submit" id="sub"> Submit </button>
+    {% endif %}
+{% if name1 %}
+    <input type="submit" name="{{val1}}" value="{{name1}}" class="submit" id="mark">
+{% endif %}
+{% if name2 %}
+    <br/><br/>
+    <input type="submit" name="{{val2}}" value="{{name2}}" class="submit" id="approve">
+</div>
+{% endif %}
+
+
+
+</form>
+</div>
+{% endblock %}

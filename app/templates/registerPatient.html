@@ -1,0 +1,43 @@
+{% extends "base_generic.html" %}
+{% block title %}
+<title> Register Patient </title>
+{% endblock %}
+
+
+{% block css %}
+ 
+{% endblock %}
+
+
+
+
+{% block nav %}
+<a href="{% url 'logout'%}"><i class="fa fa-fw fa-user"></i>Logout</a>
+{% endblock %}
+
+{% block content %}
+<div class="container">
+{% if error %}
+<h1> {{error}} </h1>
+{% endif %}
+
+{% if msg %}
+<h1> {{msg}} </h1>
+{% endif %}
+
+
+
+<form method = "POST">
+	{% if form %}
+	<br><br>
+	<h4 class="tag">Register Patient</h4>
+	{% csrf_token %}
+	
+	{{ form }}
+    <div id="buttons">
+	<button type = "submit" class="submit" id="sub"> Submit </button>
+    {% endif %}
+
+</form>
+</div>
+{% endblock %}

@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+{% block title %}
+<title> {{user.username}} | Referrals </title>
+{% endblock %}
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% block nav %}
+<a href="{% url 'logout'%}"><i class="fa fa-fw fa-user"></i>Logout</a>
+{% endblock %}
+
+
+
+
+{% block content %}
+
+    {% if nrc %}
+        <h1 class="head">{{nrc.nrcName}}</h1>
+    {% endif %}
+    {% if msg %}
+    <h1> {{msg}} </h5>
+    {% endif %}
+
+
+    	{% if referrals %}
+        <div style="overflow-x:auto;">
+            <table>
+                <tr >
+                    <th> # </th>
+                    <th> Child Name</th>
+                    <th> Father's Name</th>
+                    <th> Mother's Name</th>
+                    <th> Block/Tehsil/City </th>
+                    <th> Contact No. </th>
+                    <th> Referral Created At </th>
+                    <th> Update Status</th>
+                </tr>
+                {% for referral in referrals %}
+                <tr>
+                    <td> {{referral.pk}} </td>
+                    <td> {{referral.childName}}</td>
+                    <td> {{referral.fatherName}} </td>
+                    <td> {{referral.motherName}}  </td>
+                    <td> {{referral.tehsil}} </td>
+                    <td> {{referral.contactNo}} </td>
+                    <td> {{referral.createdAt}} </td>
+                    <td><a href="http://127.0.0.1:8000/nrc/referrals/{{ referral.pk}}"><button type="button" style="border:1px solid rgba(200,0,0,0.8);background-color: red;padding:6px;border-radius: 4px;color:white">Update Status</button></a></td>
+                    </tr>
+                {% endfor %}
+                
+            </table>
+        </div>
+
+        {% endif %}
+{% endblock %}
+

@@ -1,0 +1,79 @@
+{% load static %}
+<html>
+<head>
+	<title>AAROGYA</title>
+	<style>
+		h1,h4{
+			text-align: center;
+			color:rgba(255,255,255,0.8);
+			
+		}
+		h1{
+			color:white;
+			font-size:50px;
+			margin-bottom:3px;
+		}
+		h4{
+			margin-top:0px;
+		}
+		
+		#buttons{
+			text-align:center;
+			margin-top:230px;
+		}
+
+		button.btn{
+			border-radius:8px;
+			padding:12px;
+			transition: all 0.3s 0s linear;
+			color:white;
+			font-size:18px;
+			width:150px;
+		}
+		button#reg{
+			border:1px solid rgba(230,0,0,0.8);
+			background-color: rgba(230,0,0,0.8);
+			
+		}
+		button#log,button#ref{
+			border:1px solid rgba(0,0,200,0.8);
+			background-color: rgba(0,0,200,0.8);
+
+		}
+		button#log:hover{
+			background-color:rgba(0,0,255,1);
+			border-color:rgba(0,0,255,1)
+		}
+		button#ref:hover{
+			background-color:rgba(0,0,255,1);
+		}
+		button#ref{
+			width:200px;
+}
+		button#reg:hover{
+			background-color: rgba(255,0,0,0.8);
+		}
+		span{
+			color:white;
+			font-size:24px;	}
+		
+		body{
+			background-image: url("{% static 'samlogo.jpg' %}");
+		}
+	</style>
+</head>
+<body>
+	<section>
+		<h1>42% of India's children are malnourished</h1>
+		<h4>They cannot go to school, work, or aspire. 1500 of our future doctors, engineers or sportsmen are dying - every day</h4>
+	</section>
+	<section id="buttons">
+	
+		<a href="http://127.0.0.1:8000/accounts/register"><button type="button" class="btn" id="reg"> Register </button></a>
+		<a href="{% url 'login'%}"><button type="button" class="btn" id="log">Login</button></a>
+		<br/><br/>
+		<span>OR</span>
+		<br/><br/>
+		<a href="http://127.0.0.1:8000/refer"><button type="button" class="btn" id="ref">Refer Child</button></a></section>
+</body>
+</html>
